@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MindCare AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container login-container">
+
+    <h1>💜 Welcome</h1>
+
+    <p class="subtitle">
+        Login to continue your wellness conversation.
+    </p>
+
+    {% if error %}
+        <p class="login-error">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('login') }}">
+
+        <div class="login-field">
+            <label for="username">Username or Email</label>
+            <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username or email"
+                autocomplete="username"
+                required
+            >
+        </div>
+
+        <div class="login-field">
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+            >
+        </div>
+
+        <button type="submit" class="button">
+            Login
+        </button>
+
+    </form>
+
+    <p>
+        New to MindCare AI?
+        <a href="{{ url_for('register') }}">Create an account</a>
+    </p>
+
+    <a href="{{ url_for('home') }}" class="back-link">Back to Home</a>
+
+    <p class="note">
+        🌿 A friendly space to reflect on your well-being.
+    </p>
+
+</div>
+
+</body>
+</html>

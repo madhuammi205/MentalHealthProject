@@ -1,0 +1,251 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #eef4f8;
+    color: #263238;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.home-container {
+    max-width: 700px;
+    margin-top: 100px;
+}
+
+.card {
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #607d8b;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.info-box {
+    background: #f1f8e9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.info-box h3 {
+    margin-bottom: 10px;
+}
+
+.info-box p {
+    line-height: 1.6;
+}
+
+.note {
+    text-align: center;
+    color: #607d8b;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.button {
+    display: block;
+    width: fit-content;
+    margin: 20px auto 0;
+    padding: 13px 25px;
+    background: #1976d2;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button:hover {
+    background: #1565c0;
+}
+
+.assessment-card {
+    margin-bottom: 40px;
+}
+
+.question {
+    background: #f8fafb;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #1976d2;
+}
+
+.question h3 {
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-size: 17px;
+}
+
+.question label {
+    display: block;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.question input {
+    margin-right: 8px;
+}
+
+form .button {
+    margin-top: 30px;
+}
+
+.result-card {
+    max-width: 700px;
+    margin: auto;
+}
+
+.score-box {
+    text-align: center;
+    background: #e3f2fd;
+    padding: 25px;
+    border-radius: 12px;
+    margin: 25px 0;
+}
+
+.score-box p {
+    margin-bottom: 8px;
+    color: #546e7a;
+}
+
+.score-box h2 {
+    font-size: 45px;
+    margin: 10px 0;
+}
+
+.status-box {
+    text-align: center;
+    padding: 18px;
+    background: #f1f8e9;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.status-box h2 {
+    font-size: 25px;
+}
+
+.result-card h3 {
+    margin-bottom: 15px;
+}
+
+.guidance {
+    padding-left: 25px;
+    margin-bottom: 25px;
+}
+
+.guidance li {
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.disclaimer {
+    background: #fff8e1;
+    padding: 15px;
+    border-radius: 8px;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .home-container {
+        margin-top: 40px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .question h3 {
+        font-size: 16px;
+    }
+}
+.ai-box {
+    background: #f3e5f5;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 25px 0;
+    border-left: 4px solid #7b1fa2;
+}
+
+.ai-box h3 {
+    margin-bottom: 15px;
+}
+
+.ai-content {
+    line-height: 1.7;
+    color: #37474f;
+}
+.login-container {
+    max-width: 450px;
+    margin: 80px auto;
+    text-align: center;
+}
+
+.login-field {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.login-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.login-field input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.login-error {
+    color: red;
+    margin-bottom: 15px;
+}
+
+.demo-login {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+}

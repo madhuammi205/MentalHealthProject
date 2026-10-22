@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCare AI Chat</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='chat.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+
+        <header class="chat-header">
+            <div class="bot-icon">💜</div>
+            <div>
+                <h2>MindCare AI</h2>
+                <p>Your friendly wellness companion 🌿</p>
+            </div>
+        </header>
+
+        <main id="chat-box" class="chat-box" aria-live="polite">
+            <div class="message bot-message">
+                👋 Hi! Welcome to MindCare.
+
+                I'm here to listen and help you reflect on how
+                things have been going. There are no right or
+                wrong answers. How are you feeling today? 😊
+            </div>
+
+            <div class="mood-options" id="mood-options">
+                <button type="button" data-mood="Happy 😊">😊 Happy</button>
+                <button type="button" data-mood="Okay 😐">😐 Okay</button>
+                <button type="button" data-mood="Stressed 😟">😟 Stressed</button>
+                <button type="button" data-mood="Sad 😔">😔 Sad</button>
+            </div>
+        </main>
+
+        <div id="typing" class="typing" hidden>
+            🤖 MindCare is thinking...
+        </div>
+
+        <form id="chat-form" class="chat-form">
+            <input type="text" id="user-input"
+                   placeholder="Type your answer here..."
+                   maxlength="1000" autocomplete="off"
+                   aria-label="Your message" required>
+            <button type="submit" id="send-button">Send ➤</button>
+        </form>
+
+        <div class="chat-footer">
+            <button type="button" id="finish-button">
+                🌱 Finish and view suggestions
+            </button>
+            <p>This is general wellness support, not a diagnosis.</p>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+</html>

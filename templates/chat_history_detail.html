@@ -1,0 +1,75 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversation Details | MindCare AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f0ff;
+            color: #302344;
+            margin: 0;
+            padding: 25px 15px;
+        }
+        .container { max-width: 750px; margin: auto; }
+        .message {
+            padding: 14px 16px;
+            margin: 12px 0;
+            border-radius: 12px;
+            overflow-wrap: anywhere;
+            white-space: pre-wrap;
+        }
+        .user {
+            background: #e6d9fa;
+            margin-left: 35px;
+        }
+        .assistant {
+            background: white;
+            margin-right: 35px;
+        }
+        .button {
+            display: inline-block;
+            background: #7851a9;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 8px 8px 15px 0;
+        }
+        .date { color: #766b83; font-size: 12px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>💬 Conversation #{{ conversation.id }}</h1>
+
+    <a class="button" href="{{ url_for('chat_history') }}">
+        ← Back to History
+    </a>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message
+                {% if message.role == 'user' %}user{% else %}assistant{% endif %}">
+                <strong>
+                    {% if message.role == 'user' %}
+                        You
+                    {% else %}
+                        MindCare AI 💜
+                    {% endif %}
+                </strong>
+
+                <p>{{ message.content }}</p>
+
+                <div class="date">{{ message.created_at }}</div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No messages found for this conversation.</p>
+    {% endif %}
+</div>
+</body>
+</html>
+```

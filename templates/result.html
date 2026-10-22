@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wellness Results | MindCare AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f6;
+            margin: 0;
+            padding: 30px 15px;
+            color: #333;
+        }
+
+        .result-container {
+            max-width: 750px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #387c70;
+        }
+
+        .intro {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .result-card {
+            background: #f8fbfa;
+            border: 1px solid #e0ece8;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 18px 0;
+        }
+
+        .result-card h2 {
+            color: #387c70;
+            margin-top: 0;
+        }
+
+        .percentage {
+            text-align: center;
+            font-size: 42px;
+            font-weight: bold;
+            color: #387c70;
+            margin: 15px 0;
+        }
+
+        li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .note {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .actions {
+            text-align: center;
+            margin-top: 28px;
+        }
+
+        .action-link {
+            display: inline-block;
+            background: #387c70;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin: 6px;
+        }
+
+        .action-link:hover {
+            background: #286257;
+        }
+
+        .logout-link {
+            display: block;
+            margin-top: 18px;
+            color: #387c70;
+        }
+
+        @media (max-width: 500px) {
+            .result-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="result-container">
+
+        <h1>🌿 Your Wellness Results</h1>
+
+        <p class="intro">
+            Thank you for sharing your thoughts with MindCare AI. 💜
+            Take a moment to review your personalized feedback.
+        </p>
+
+        <!-- AI Summary -->
+        <section class="result-card">
+            <h2>📝 Your Summary</h2>
+
+            <p>
+                {{ summary | default("Your summary is not available right now.", true) }}
+            </p>
+        </section>
+
+        <!-- Experimental Stress Estimate -->
+        <section class="result-card">
+            <h2>📊 Experimental Stress Estimate</h2>
+
+            {% if percentage is defined and percentage is not none %}
+                <div class="percentage">{{ percentage }}%</div>
+            {% else %}
+                <p>
+                    Your estimate could not be generated this time.
+                    You can try another conversation.
+                </p>
+            {% endif %}
+
+            <p class="note">
+                This percentage is an experimental AI-generated estimate,
+                not a scientifically validated measurement, medical diagnosis,
+                or substitute for professional advice.
+            </p>
+        </section>
+
+        <!-- AI Suggestions -->
+        <section class="result-card">
+            <h2>💚 General Wellness Suggestions</h2>
+
+            {% if guidance %}
+                <ul>
+                    {% for item in guidance %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>
+                    Try taking regular breaks, keeping a consistent daily
+                    routine, and talking with someone you trust when you
+                    need support.
+                </p>
+            {% endif %}
+        </section>
+
+        <!-- Navigation -->
+        <div class="actions">
+
+            <a href="{{ url_for('chat') }}" class="action-link">
+                💬 Start New Conversation
+            </a>
+
+            <a href="{{ url_for('home') }}" class="action-link">
+                🏠 Home
+            </a>
+
+            <a href="{{ url_for('logout') }}" class="logout-link">
+                Logout
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

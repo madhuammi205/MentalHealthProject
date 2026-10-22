@@ -1,0 +1,101 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat History | MindCare AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f0ff;
+            margin: 0;
+            padding: 25px 15px;
+            color: #302344;
+        }
+        .container {
+            max-width: 750px;
+            margin: auto;
+        }
+        h1 { color: #7046a8; }
+        .card {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 14px;
+            box-shadow: 0 3px 12px #0000000d;
+        }
+        .preview {
+            color: #666;
+            overflow-wrap: anywhere;
+        }
+        .button {
+            display: inline-block;
+            background: #7851a9;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 8px 8px 0 0;
+        }
+        .secondary { background: #e9ddf8; color: #55377d; }
+        .empty {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📜 Your Chat History</h1>
+    <p>View your previous MindCare conversations and reports.</p>
+
+    <a class="button" href="{{ url_for('chat') }}">💜 New Conversation</a>
+    <a class="button secondary" href="{{ url_for('home') }}">🏠 Home</a>
+
+    {% if conversations %}
+        {% for conversation in conversations %}
+            <div class="card">
+                <h3>💬 Conversation #{{ conversation.id }}</h3>
+
+                <p>
+                    <strong>Date:</strong>
+                    {{ conversation.started_at or "Date unavailable" }}
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+                    {{ conversation.status or "Unknown" }}
+                </p>
+
+                <p class="preview">
+                    <strong>Last message:</strong>
+                    {{ (conversation.last_message or "No messages")[:160] }}
+                </p>
+
+                <a class="button"
+                   href="{{ url_for('chat_history_detail',
+                                    conversation_id=conversation.id) }}">
+                    View Conversation
+                </a>
+
+                {% if conversation.has_report %}
+                    <a class="button secondary"
+                       href="{{ url_for('chat_history_result',
+                                        conversation_id=conversation.id) }}">
+                        📊 View Report
+                    </a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="empty">
+            <h3>No conversations yet 💜</h3>
+            <p>Your previous conversations will appear here after you start chatting.</p>
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>
+```
